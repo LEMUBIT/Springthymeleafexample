@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span th:text="${title}"></span>
+<h1 th:text="${carBrand}"></h1>
+
+<div th:if="${price}>1000">
+    <span th:text="${carBrand}"> </span> is pricey.
+</div>
+
+<div th:if="${price}<1000">
+    <span th:text="${carBrand}"> </span> is not expensive.
+</div>
+
+<br/>
+<br/>
+<table>
+    <tr>
+        <th>Price</th>
+        <th>Name</th>
+        <th>Year</th>
+    </tr>
+
+    <tr th:each="car: ${cars}">
+        <td th:text="${car.price}"></td>
+        <td th:text="${car.name}"></td>
+        <td th:text="${car.year}"></td>
+    </tr>
+</table>
+<br/>
+<br/>
+<h3>Thymeleaf URLs</h3>
+<!-- redirect to Scope page without parameter -->
+<a th:href="@{~/scope}">Visit Scope Page</a> <br />
+<!-- redirect to demo page with parameter -->
+<a th:href="@{~/scope(id=1, name=Lemuel)}">Visit Scope page With Parameter</a>
+</body>
+</html>
